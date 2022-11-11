@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    /* border: 1px solid red; */
+
+}
+
+:root {
+    --gray:#ECEFF1;
+    --dark:#131415;
+    --arg:#73c5e0;
+
+}
+
+.container-nav {
+    width: 100%;
+    height: 100%;
+   
+}
+
+.navbar {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1300px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    
+    
+}
+
+.navbar img {
+    width: 200px;
+    height: auto;
+}
+
+.navbar ul  {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+}
+
+.navbar a {
+   list-style: none;
+   color: var(--dark);
+}
+
+.navbar i {
+    margin: 20px;
+}
+
+.buscador input {
+    padding: 5px;
+    border-radius: 8px;
+    width: 250px;
+    background-color: var(--gray);
+}
+
+.buscador {
+    position: relative;
+}
+
+.icon-lupa {
+    position: absolute;
+    top: -13px;
+    left:200px;
+   
+}
+
+
+.cuotas6 {
+    width: 100%;
+    height: 200px;
+    background-color: var(--dark);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.cuotas6 h2{
+    font-size: 35px;
+}
+
+.cuotas6 p {
+    font-size: 20px;
+}
+
+.hero {
+    width: 100%;
+    max-width: 1300px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    gap: 100px;
+
+}
+
+.hero img {
+    width: 600px;
+    height: 600px;
+}
+
+.texto-hero {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+}
+
+.texto-hero h2 {
+    font-size: 50px;
+}
+
+.texto-hero p {
+    font-size: 20px;
+}
+
+.container-arg-pasion{
+    background-image: url(./img/arg-pasion.jpg);
+    width: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+   
+}
+
+.arg-pasion {
+    width: 100%;
+    max-width: 1300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 40px;
+    
+}
+
+.populares {
+    width: 100%;
+    height: 100vh;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    gap: 40px;
+
+}
+
+.cards-populares {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    /* border: #131415 solid 1px; */
+    gap: 5px;
+   
+    
+   
+}
+
+.card-popu img {
+    width: 302px;
+    height: 310px;
+    
+}
+
+.card-popu {
+    width: 95%;
+    height: 410px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    transition: all 0.5s linear;
+}
+
+.card-popu:hover{
+    border: 1px solid var(--dark);
+    transition: all 0.5s linear;
+    border-radius: 5px;
+    
+}
+
+.card-popu span {
+    position: absolute;
+    bottom: 102px;
+    background-color: white;
+    box-shadow: 0 0 26px rgb(108, 107, 107);
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.card-popu button {
+    width: 100px;
+    margin-left: 200px;
+    background-color: var(--gray);
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid var(--dark);
+    
+}
+
+.cartContainer {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: 453px;
+    height: 891px;
+    color: #ffffff;
+    z-index: 1;
+    background-color: var(--arg);
+}
+.cartBase {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding-top: 50px;
+    z-index: 2;
+
+}
+
+.divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width:400px;
+    border-bottom: #131415 solid ;
+    
+}
+
+.x {
+    border-radius: 5px;
+    padding: 8px;
+    background: linear-gradient(98.81deg, var(--gray) -0.82%,#73c5e0 101.53%);
+    position:absolute;
+    left: 0;
+    z-index: 3;
+    cursor: pointer;
+
+}
+
+.space {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.hidden{
+    display: none;
+}
