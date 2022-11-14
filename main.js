@@ -1,14 +1,20 @@
-const populares = document.querySelector(".cards-populares")
-const hombres = document.querySelector(".containerHombre")
-const mujeres = document.querySelector(".containerMujer")
-const niños = document.querySelector(".containerNiños")
+const populares = document.getElementById("populares-container");
+const hombres = document.getElementById("containerHombre");
+const mujeres = document.getElementById("containerMujer");
+const niños = document.getElementById("containerNiños");
+const hombreBtn = document.querySelector(".hombreBtn");
+const mujerBtn = document.querySelector(".mujerBtn");
+const niñosBtn = document.querySelector(".niñosBtn");
 // Carrito
-const cartContainer = document.querySelector(".cartContainer")
-const openCart = document.querySelector(".icon-carrito")
-const cartMenu = document.querySelector(".cartBase")
-const cerrarCart = document.querySelector(".cerrarCarrito")
+const cantProductos = document.querySelector('.counter_cart')
+const cartContainer = document.querySelector(".cartContainer");
+const cartOpen = document.querySelector(".icon-carrito");
+const cartMenu = document.querySelector(".cartMenu");
+const cerrarCart = document.querySelector(".cerrarCarrito");
+const btnAdd = document.querySelector(".btns-add");
 const subtotal = document.getElementById("subtotal");
-const precioTotal = document.getElementById("precioTotal"); 
+const precioTotal = document.getElementById("precioTotal");
+const btnBuy = document.querySelector(".btn-Buy")
 
 let carts = JSON.parse(localStorage.getItem("carts")) || [];
 
@@ -16,44 +22,225 @@ const saveLocalStorage = (cartList) => {
   localStorage.setItem("carts", JSON.stringify(cartList));
 };
 
-
-const filterPopulares = () =>{
-   const ropaList = ropa.filter(
-    (ropa) => ropa.populares)
-    
-  populares.innerHTML = ropaList.map(renderRopa).join("");
-}
-
-const renderRopa = (prendas) =>{
-
-    const {name, img, description, price,} = prendas;
-    return `
+const renderRopa = (prendas) => {
+  const { name, img, description, price, id } = prendas;
+  return `
     
 <div class="card-popu">
     <img src="${img}" alt="">
+
     <span>${price}</span>
     <h3>${name}</h3>
     <p>${description}</p>
-    <button>Comprar</button>
+    <button class="btns-add" data-id=${id}>Comprar</button>
 </div> 
-    `
+    `;
+};
 
+
+
+const filterPopulares = () => {
+  const ropaList = ropa.filter((ropaP) => ropaP.populares);
+
+  populares.innerHTML = ropaList.map(renderRopa).join("");
+};
+
+// const filterHombres = () => {
+//   const ropaList1 = ropa.filter((ropaH) => ropaH.hombre);
+
+//   hombres.innerHTML = ropaList1.map(renderRopa).join("");
+// };
+
+// const filterMujeres = () => {
+//   const ropaList2 = ropa.filter((ropaM) => ropaM.mujer);
+
+//   mujeres.innerHTML = ropaList2.map(renderRopa).join("");
+// };
+
+// const filterNiños = () => {
+//   const ropaList3 = ropa.filter((ropaN) => ropaN.niño);
+
+//   niños.innerHTML = ropaList3.map(renderRopa).join("");
+// };
+
+const openCart = () => {
+  cartContainer.classList.remove("hidden");
+  precioTotal.textContent = setPrecio(carts)//renderiza el precio total
+  subTotal.textContent = setPrecio(carts)//renderiza el precio total
+}
+
+const closeCart = () => {
+  cartContainer.classList.add("hidden");
+
+};
+
+const renderCartCarrito = (objeto)=>{
+  const {img ,name , description,price,id ,cantidad} = objeto;
+  return `
+  <div class="cart-item">
+    <img src=${img} alt="ropa" />
+    <div class="item-info">
+      <h3 class="item-title">${name}</h3>
+      <p class="item-bid">${description}</p>
+      <span class="item-price">${price}</span>
+    </div>
+    <div class="item-handler">
+      <span class="quantity-handler down" data-id=${id}>-</span>
+      <span class="item-quantity">${id}>${cantidad}</span> 
+      <span class="quantity-handler up" data-id=${id}>+</span>
+    </div>
+</div>`
+}
+
+const renderCarrito = () => {
+  cartMenu.innerHTML = carrito.map(renderRopa).join('');
+}
+
+const closeOnScroll = () => {
+  if (cartContainer.classList.contains('hidden'))
+      return;
+
+  cartContainer.classList.add('hidden');
+};
+
+const compraFinal = () => {
+  if (!carts.length) return;
+  if (window.confirm('Desea completar su compra?')) {
+      carts = [];
+      saveCarrito(carts);
+      alert('Compra exitosa');
+      precioTotal.textContent = setPrecio(carts);
+      subTotal.textContent = setPrecio(carts);
+      renderCarrito();
+      cantProductos.textContent = cantTotalproductos();
   }
+};
 
-// const renderizadototal = () =>{
-//     populares.innerHTML = renderRopa(ropa[1])
+const cantTotalproductos = () => {
+  let totalProductos = 0
+  carts.forEach(prod =>
+      totalProductos = totalProductos + prod.cantidad)
+  return totalProductos
+}        
+
+const setPrecio = (carrito) => {
+  pTotal = 0
+  carrito.forEach(prod => pTotal += (prod.price * prod.cantidad))
+ 
+  return pTotal
+}
+
+const addCarrito = (e) => {
     
-    
-// }
+   
 
+  if (e.target.classList.contains("buttonAgregar")) {
+      
+      tag = e.target.getAttribute('data-id');
+      const producto = ropa.find(item => item.id == tag)
+      let existente = carts.find(prod => prod.id == producto.id)
+      
+      if (!existente ) {
+         
+          
+          carrito = [...carrito, {...producto , cant: 1}];
+          
+          saveCarrito(carts);
+          renderCarrito();            
+          subTotal.textContent = setPrecio(carts);
+          precioTotal.textContent = setPrecio(carts);
+          
+      }else{
 
-const init = () => {
-
-    filterPopulares()
+          existente.cantidad = existente.cantidad + 1 ;
+        
+         
+          saveCarrito(carts);
+          subTotal.textContent = setPrecio(carts);
+          precioTotal.textContent = setPrecio(carts);
+          renderCarrito();
+              
+      }
+      
+      cantProductos.textContent = cantTotalproductos();
+  }else {
+      return;
+  }
 
 }
 
 
-init()
+const sumarProductos = (e) =>{
+  if(e.target.dataset.suma=="suma"){
+     
+      const idTarjeta = e.target.getAttribute('data-id');
+      
+      
+      carts = carts.map(prod => {
+          return prod.id == idTarjeta
+            ? { ...prod, cant: prod.cantidad + 1 }
+            : prod;
+        }
+      )
+      saveCarrito(carts);
+      subTotal.textContent = setPrecio(carts);
+      precioTotal.textContent = setPrecio(carts);
+      renderCarrito();
+      cantProductos.textContent = cantTotalproductos();
+  };
+
+  }
 
 
+const restarProductos = (e) =>{
+  if(e.target.dataset.resta=="resta"){
+      const idTarjeta = e.target.getAttribute('data-id');
+      const objetoEncontrado = carts.find(ropa => ropa.id == idTarjeta);
+      if(objetoEncontrado.cantidad  == 1 ){
+          
+          carts=carts.filter( ropa => ropa.id != objetoEncontrado.id);
+          cantProductos.textContent = cantTotalproductos();
+          saveCarrito(carts);
+          subTotal.textContent = setPrecio(carts);
+          precioTotal.textContent = setPrecio(carts);
+          renderCarrito();
+          checkCarrito(carts);
+          
+      }else{
+          carts = carts.map(ropa => {
+              return ropa.id == idTarjeta
+                ? { ...ropa, cant: ropa.cantidad - 1 }
+                : ropa;
+            }
+          )
+          cantProductos.textContent = cantTotalproductos();
+          saveCarrito(carts);
+          subTotal.textContent = setPrecio(carts);
+          precioTotal.textContent = setPrecio(carts);
+          renderCarrito();         
+      }       
+  }
+
+};
+
+
+
+
+const init = () => {
+  
+  filterPopulares();
+  // filterTodaRopa();
+  cartOpen.addEventListener("click", openCart);
+  cerrarCart.addEventListener("click",closeCart);
+  window.addEventListener('DOMContentLoaded', renderPage);
+  cantProductos.textContent = cantTotalproductos();
+  window.addEventListener('scroll', closeOnScroll);
+  btnBuy.addEventListener("click", addCarrito)
+
+
+
+  
+
+};
+
+init();

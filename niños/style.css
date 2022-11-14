@@ -266,36 +266,3 @@
 .hidden{
     display: none;
 }
-
-.icons{
-    width: 100%;
-    position: relative;
-}
-
-.counter_cart {
-    background-color:var(--arg);
-    color:white;
-    /* outline: 1px solid #FFFFFF; */
-    border-radius: 50%;
-    font-size: 10px;
-    padding: 1px;
-    font-weight: 400;
-    width: 18px;
-    height: 18px;
-    text-align: center;
-    position: absolute;
-    left: 35px;
-    top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-}
-
-.buttonAgregar{
-    background-color: black;
-    color: white;
-    padding: 8px;
-    cursor: pointer;
-    
-}
