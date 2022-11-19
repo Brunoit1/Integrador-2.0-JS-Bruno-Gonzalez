@@ -30,22 +30,23 @@
             
     
                 <div class="icons">
-                    <i class="fa-solid fa-cart-shopping icon-carrito"></i>
+                    <i class="fa-solid fa-cart-shopping icon-carrito"><p class="counter_cart">0</p></i>
                     <i class="fa-solid fa-user"></i>
                 </div>
-    
-    <!-- Carrito -->
-                <section class="cartContainer hidden">
-                    <div class="cerrarCarrito">X</div>    
+
+<!-- Carrito -->
+         <section class="cartContainer hidden">
+                <div class="cerrarCarrito">X</div>    
                     <div class="cartBase">
                         <h3>Tus Productos</h3>   
                         <div  id="" class="cartMenu"> 
-        
+                        
         
                         </div>
                         <div class="subto space">
                             <h4>Subtotal:</h4>
-                            <h4 id="subtotal"></h4>
+                            
+                            <div class="signo-peso">$<h4 id="subtotal"></h4></div>
                         </div>    
                         <div class="envio space">
                             <h4>Envio:</h4>
@@ -54,12 +55,13 @@
                         <hr class="divider">
                         <div class="precio space">
                             <span>Total:</span>
-                            <span id="precioTotal">$0.00</span>
+                            <div class="signo-peso">$
+                            <span id="precioTotal"></span></div>
                         </div> 
-                        <button class="btns-add-cart">Continuar</button>
+                        <button class="btns-add-cart btn-Buy">Comprar</button>
                  
-                    </div>
-                </section>
+                </div>
+            </section>
     
             </nav>
         </div>
@@ -71,7 +73,7 @@
     <section>
         <div class="populares ">
             <h1>Nuestra Selección para Niños</h1>
-            <div class="cards-populares " id="containerNiños">
+            <div class="cards-populares " id="Niños">
                 <!-- <div class="card-popu">
                     <img src="./img/river-camperon.jpg" alt="">
                     <span>$20.000</span>
@@ -84,6 +86,8 @@
             </div>
         </div>
     </section>
+    
+
     
     
 

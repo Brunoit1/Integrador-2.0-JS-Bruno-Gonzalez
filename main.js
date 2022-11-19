@@ -12,13 +12,14 @@ const cartOpen = document.querySelector(".icon-carrito");
 const cartMenu = document.querySelector(".cartMenu");
 const cerrarCart = document.querySelector(".cerrarCarrito");
 const btnAdd = document.querySelector(".btns-add");
-const subtotal = document.getElementById("subtotal");
-const precioTotal = document.getElementById("precioTotal");
+const subTotal = document.querySelector("#subtotal");
+const precioTotal = document.querySelector("#precioTotal");
 const btnBuy = document.querySelector(".btn-Buy")
+
 
 let carts = JSON.parse(localStorage.getItem("carts")) || [];
 
-const saveLocalStorage = (cartList) => {
+const saveCarrito = (cartList) => {
   localStorage.setItem("carts", JSON.stringify(cartList));
 };
 
@@ -29,7 +30,7 @@ const renderRopa = (prendas) => {
 <div class="card-popu">
     <img src="${img}" alt="">
 
-    <span>${price}</span>
+    <span>$${price}</span>
     <h3>${name}</h3>
     <p>${description}</p>
     <button class="btns-add" data-id=${id}>Comprar</button>
@@ -65,8 +66,8 @@ const filterPopulares = () => {
 
 const openCart = () => {
   cartContainer.classList.remove("hidden");
-  precioTotal.textContent = setPrecio(carts)//renderiza el precio total
-  subTotal.textContent = setPrecio(carts)//renderiza el precio total
+   precioTotal.textContent = setPrecio(carts)
+   subTotal.textContent = setPrecio(carts)
 }
 
 const closeCart = () => {
@@ -75,25 +76,24 @@ const closeCart = () => {
 };
 
 const renderCartCarrito = (objeto)=>{
-  const {img ,name , description,price,id ,cantidad} = objeto;
+  const {img ,name , description,id ,cantidad} = objeto;
   return `
   <div class="cart-item">
-    <img src=${img} alt="ropa" />
+    <img src=${img} alt="" />
     <div class="item-info">
       <h3 class="item-title">${name}</h3>
       <p class="item-bid">${description}</p>
-      <span class="item-price">${price}</span>
     </div>
-    <div class="item-handler">
-      <span class="quantity-handler down" data-id=${id}>-</span>
-      <span class="item-quantity">${id}>${cantidad}</span> 
-      <span class="quantity-handler up" data-id=${id}>+</span>
+    <div class="item-cant">
+      <span class="btn-cant low" data-id=${id}>-</span>
+      <span class="item-quantity" data-id=${id}>${cantidad}</span> 
+      <span class="btn-cant up" data-id=${id}>+</span>
     </div>
 </div>`
 }
 
 const renderCarrito = () => {
-  cartMenu.innerHTML = carrito.map(renderRopa).join('');
+  cartMenu.innerHTML = carts.map(renderCartCarrito).join('');
 }
 
 const closeOnScroll = () => {
@@ -123,62 +123,67 @@ const cantTotalproductos = () => {
   return totalProductos
 }        
 
-const setPrecio = (carrito) => {
+const setPrecio = (carts) => {
   pTotal = 0
-  carrito.forEach(prod => pTotal += (prod.price * prod.cantidad))
+  carts.forEach(prod => pTotal += (prod.price * prod.cantidad))
  
   return pTotal
 }
 
-const addCarrito = (e) => {
+const checkCarrito = (carts) => {
     
-   
+  if (carts.length === 0) {
+      cartMenu.innerHTML = `<h4>No hay productos en el carrito</h4>`
+  } 
+}
 
-  if (e.target.classList.contains("buttonAgregar")) {
-      
-      tag = e.target.getAttribute('data-id');
-      const producto = ropa.find(item => item.id == tag)
-      let existente = carts.find(prod => prod.id == producto.id)
-      
-      if (!existente ) {
-         
-          
-          carrito = [...carrito, {...producto , cant: 1}];
-          
-          saveCarrito(carts);
-          renderCarrito();            
-          subTotal.textContent = setPrecio(carts);
-          precioTotal.textContent = setPrecio(carts);
-          
-      }else{
+const addCart = (e) =>{
 
-          existente.cantidad = existente.cantidad + 1 ;
+  if (e.target.classList.contains("btns-add")) {
+      
+    tag = e.target.getAttribute('data-id');
+    const producto = ropa.find(item => item.id == tag)
+    let existente = carts.find(prod => prod.id == producto.id)
+    
+    if (!existente ) {
+       
         
-         
-          saveCarrito(carts);
-          subTotal.textContent = setPrecio(carts);
-          precioTotal.textContent = setPrecio(carts);
-          renderCarrito();
-              
-      }
+        carts = [...carts, {...producto , cantidad: 1}];
+        
+        saveCarrito(carts);
+        renderCarrito();            
+        subTotal.innerHTML= setPrecio(carts);
+        precioTotal.innerHTML = setPrecio(carts);
+        
+    }else{
+
+        existente.cantidad = existente.cantidad + 1 ;
       
-      cantProductos.textContent = cantTotalproductos();
-  }else {
-      return;
-  }
+       
+        saveCarrito(carts);
+        subTotal.innerHTML = Number(setPrecio(carts))
+        precioTotal.innerHTML = Number(setPrecio(carts))
+        renderCarrito();
+            
+    }
+    
+    cantProductos.innerHTML = cantTotalproductos();
+}else {
+    return;
+}
 
 }
 
 
 const sumarProductos = (e) =>{
-  if(e.target.dataset.suma=="suma"){
+  if(e.target.classList.contains("up")){
      
       const idTarjeta = e.target.getAttribute('data-id');
       
       
       carts = carts.map(prod => {
           return prod.id == idTarjeta
-            ? { ...prod, cant: prod.cantidad + 1 }
+            ? { ...prod, cantidad: prod.cantidad + 1 }
             : prod;
         }
       )
@@ -193,7 +198,7 @@ const sumarProductos = (e) =>{
 
 
 const restarProductos = (e) =>{
-  if(e.target.dataset.resta=="resta"){
+  if(e.target.classList.contains("low")){
       const idTarjeta = e.target.getAttribute('data-id');
       const objetoEncontrado = carts.find(ropa => ropa.id == idTarjeta);
       if(objetoEncontrado.cantidad  == 1 ){
@@ -209,7 +214,7 @@ const restarProductos = (e) =>{
       }else{
           carts = carts.map(ropa => {
               return ropa.id == idTarjeta
-                ? { ...ropa, cant: ropa.cantidad - 1 }
+                ? { ...ropa, cantidad: ropa.cantidad - 1 }
                 : ropa;
             }
           )
@@ -225,17 +230,40 @@ const restarProductos = (e) =>{
 
 
 
+const sumarestaRopa= (e) =>{
+  sumarProductos(e);
+  restarProductos(e);
+
+}
+
+
+const renderPage = () => {
+
+  cantProductos.textContent = cantTotalproductos();
+  renderCarrito();
+  populares.addEventListener('click', addCart);
+  
+  
+  cartMenu.addEventListener("click",sumarestaRopa)
+
+
+
+}
+
+
+
 
 const init = () => {
   
+  window.addEventListener('DOMContentLoaded', renderPage)
   filterPopulares();
   // filterTodaRopa();
   cartOpen.addEventListener("click", openCart);
   cerrarCart.addEventListener("click",closeCart);
-  window.addEventListener('DOMContentLoaded', renderPage);
-  cantProductos.textContent = cantTotalproductos();
-  window.addEventListener('scroll', closeOnScroll);
-  btnBuy.addEventListener("click", addCarrito)
+  btnBuy.addEventListener("click", compraFinal)
+  
+  
+ 
 
 
 

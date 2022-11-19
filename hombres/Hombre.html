@@ -30,36 +30,38 @@
             
     
                 <div class="icons">
-                    <i class="fa-solid fa-cart-shopping icon-carrito"></i>
+                    <i class="fa-solid fa-cart-shopping icon-carrito"><p class="counter_cart">0</p></i>
                     <i class="fa-solid fa-user"></i>
                 </div>
     
     <!-- Carrito -->
-                <section class="cartContainer hidden">
-                    <div class="cerrarCarrito">X</div>    
-                    <div class="cartBase">
-                        <h3>Tus Productos</h3>   
-                        <div  id="" class="cartMenu"> 
+        <section class="cartContainer hidden">
+            <div class="cerrarCarrito">X</div>    
+            <div class="cartBase">
+                <h3>Tus Productos</h3>   
+                <div  id="" class="cartMenu"> 
+                
+
+                </div>
+                <div class="subto space">
+                    <h4>Subtotal:</h4>
+                    
+                    <div class="signo-peso">$<h4 id="subtotal"></h4></div>
+                </div>    
+                <div class="envio space">
+                    <h4>Envio:</h4>
+                    <h4>Gratis</h4>
+                </div>               
+                <hr class="divider">
+                <div class="precio space">
+                    <span>Total:</span>
+                    <div class="signo-peso">$
+                    <span id="precioTotal"></span></div>
+                </div> 
+                <button class="btns-add-cart btn-Buy">Comprar</button>
         
-        
-                        </div>
-                        <div class="subto space">
-                            <h4>Subtotal:</h4>
-                            <h4 id="subtotal"></h4>
-                        </div>    
-                        <div class="envio space">
-                            <h4>Envio:</h4>
-                            <h4>Gratis</h4>
-                        </div>               
-                        <hr class="divider">
-                        <div class="precio space">
-                            <span>Total:</span>
-                            <span id="precioTotal">$0.00</span>
-                        </div> 
-                        <button class="btns-add-cart">Continuar</button>
-                 
-                    </div>
-                </section>
+            </div>
+        </section>
     
             </nav>
         </div>
@@ -84,7 +86,6 @@
             </div>
         </div>
     </section>
-    
     
 
     <script src="data.js"></script>
