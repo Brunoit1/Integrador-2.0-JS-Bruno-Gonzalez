@@ -158,6 +158,7 @@
     align-items: center;
     margin-top: 100px;
     gap: 40px;
+    margin-bottom: 100px;
 
 }
 
@@ -349,6 +350,7 @@
 
 .section-footer {
     width: 100%;
+    height: 41vh;
     background-color: var(--arg);
     margin: 0 auto;
 }
@@ -370,32 +372,193 @@
     flex-direction: column;
     padding: 20px;
     gap: 50px;
-    cursor: pointer;
 }
 
 .texto-footer p {
-    padding: 8px 0px;
+    margin: 10px 0px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+
+}
+
+
+.texto-footer p:hover {
+    transition: all 0.5s linear;
+    color: var(--gray);
+    
+
 }
 
 .texto-footer2{
     display: flex;
     flex-direction: column;
     padding: 20px;
-    gap: 50px;
-    cursor: pointer;
+    gap: 20px;
+
 }
 
 .texto-footer2 p {
-    padding: 8px 0px;
+    margin: 10px 0px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+
+.texto-footer2 p:hover {
+    transition: all 0.5s linear;
+    color: var(--gray);
+    
+
 }
 
 .icons-footer{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
-    gap: 30px;
+    margin-top: 50px;
+    gap: 20px;
 }
 
 .icons-footer i {
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+
+.icons-footer i:hover {
+    transition: all 0.5s linear;
+    color: var(--gray);
+}
+
+#toggle-menu {
+    display: none;
+}
+
+
+@media (max-width: 992px) {
+    .hero img {
+        display: none;
+    }
+
+    .buscador{
+        display: none;
+    }
+
+
+    .navbar {
+        gap: 20px;
+    }
+
+    .navbar img{
+        width: 100px;
+    }
+
+    .navbar ul{
+         gap:10px;
+    }
+
+
+    .cartContainer {
+        top: 0;
+        right: 0;
+        position: absolute;
+        width: 400px;
+        min-height: 800px;
+        color: #ffffff;
+        z-index: 999999;
+        background-color: var(--arg);
+        
+    }
+
+    
+    .divider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width:300px;
+        border-bottom: #131415 solid ;
+        
+    }
+    
+    .cart-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 380px;
+        height: 120px;
+        box-shadow: 0 0 26px rgba(255, 255, 255, 0.699);
+        border-radius: 10px;
+    
+    }
+    
+    .btn-cant {
+    cursor: pointer;
+    border: 1px solid white;
+    padding: 5px 15px;
+    border-radius: 10px;
+
+    }
+
+    .cuotas6 p {
+       font-size: 15px;
+    }
+
+    .cuotas6 h2 {
+        font-size: 20px;
+    }
+
+    .hero {
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .texto-hero h2 {
+        font-size: 20px;
+    }
+
+
+    .container-arg-pasion {
+        display: none;
+    }
+
+    .cards-populares {
+        grid-template-columns: 1fr 1fr ;
+    }
+
+    
+    .card-popu img {
+        width: 202px;
+        height: 210px;
+        
+    }
+    
+    .card-popu {
+        width: 95%;
+        height: 410px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+        transition: all 0.5s linear;
+    }
+
+    
+    .card-popu span {
+        position: absolute;
+        bottom: 202px;
+        background-color: white;
+        box-shadow: 0 0 26px rgb(108, 107, 107);
+        padding: 2px;
+        border-radius: 5px;
+    }
+    
+    .card-popu button {
+        width: 80px;
+        margin-left: 120px;
+        background-color: var(--gray);
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid var(--dark);
+        
+    }
     
 }
