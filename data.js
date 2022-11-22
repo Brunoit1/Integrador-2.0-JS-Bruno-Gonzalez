@@ -145,7 +145,7 @@ const ropa = [
   {
     id: 14,
     name: "Remera Ladrillo ",
-    price: "$7.499",
+    price: 7499,
     img: "./img/hombre/14.jpg",
     description: "Hombre Casual",
     hombre: true,
@@ -167,7 +167,7 @@ const ropa = [
   {
     id: 16,
     name: "Campera de Presentación River Plate ",
-    price: "$22.000",
+    price: 22000,
     img: "./img/hombre/16.jpg",
     description: "Hombre Fútbol",
     hombre: true,
@@ -200,7 +200,7 @@ const ropa = [
   {
     id: 19,
     name: "Zapatillas Stan Smith Blancas",
-    price: "$19.999",
+    price: 19999,
     img: "./img/hombre/19.jpg",
     description: "Hombre Zapatillas",
     hombre: true,
@@ -236,7 +236,7 @@ const ropa = [
   {
     id: 22,
     name: "Calza Rosa",
-    price: "$7.299",
+    price: 7299,
     img: "./img/mujer/22.jpg",
     description: "Mujer Casual",
     hombre: false,
@@ -259,7 +259,7 @@ const ropa = [
   {
     id: 24,
     name: "Campera Negra Clásica",
-    price: "$12.499",
+    price: 12499,
     img: "./img/mujer/24.jpg",
     description: "Mujer Casual",
     hombre: false,
@@ -270,7 +270,7 @@ const ropa = [
   {
     id: 25,
     name: "Buzo Essential Amarillo",
-    price: "$9.999",
+    price: 9999,
     img: "./img/mujer/25.jpg",
     description: "Mujer Casual",
     hombre: false,
@@ -281,7 +281,7 @@ const ropa = [
   {
     id: 26,
     name: "Camiseta River Plate Original",
-    price: "$12.000",
+    price: 12000,
     img: "./img/mujer/26.jpg",
     description: "Mujer Fútbol",
     hombre: false,
@@ -402,7 +402,7 @@ const ropa = [
   {
     id: 37,
     name: "Top Deportivo Rosa Oscuro",
-    price: "$4.799",
+    price: 4799,
     img: "./img/mujer/37.jpg",
     description: "Mujer Running",
     hombre: false,
@@ -424,7 +424,7 @@ const ropa = [
   {
     id: 39,
     name: "Zapatillas Run Falcon Blancas",
-    price: "$20.599",
+    price: 20599,
     img: "./img/mujer/39.jpg",
     description: "Mujer Running",
     hombre: false,
@@ -473,7 +473,7 @@ const ropa = [
   {
     id: 43,
     name: "Buzo Adidas x Lego Amarillo ",
-    price: "$10.999",
+    price: 10999,
     img: "img/Niños/43.jpg",
     description: "Ñinos Casual",
     hombre: false,
@@ -650,7 +650,7 @@ const ropa = [
   {
     id: 59,
     name: "Remera Estampada Blanca Clasica",
-    price: "$4.999",
+    price: 4999,
     img: "img/Niños/59.jpg",
     description: "Ñinos Casual",
     hombre: false,

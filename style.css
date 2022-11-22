@@ -417,13 +417,14 @@
     gap: 20px;
 }
 
-.icons-footer i {
+.icons-footer a {
+    color: var(--dark);
     font-size: 20px;
     cursor: pointer;
     transition: all 0.5s linear;
 }
 
-.icons-footer i:hover {
+.icons-footer a:hover {
     transition: all 0.5s linear;
     color: var(--gray);
 }
@@ -444,23 +445,24 @@
 
 
     .navbar {
-        gap: 20px;
+        gap: 10px;
     }
 
     .navbar img{
-        width: 100px;
+        width: 50px;
     }
 
     .navbar ul{
-         gap:10px;
+         gap:5px;
     }
+
 
 
     .cartContainer {
         top: 0;
         right: 0;
         position: absolute;
-        width: 400px;
+        width: 320px;
         min-height: 800px;
         color: #ffffff;
         z-index: 999999;
@@ -483,12 +485,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 380px;
+        width: 300px;
         height: 120px;
         box-shadow: 0 0 26px rgba(255, 255, 255, 0.699);
         border-radius: 10px;
+        font-size: 14px;
     
     }
+
+    .cart-item img {
+        width: 90px;
+        height: 90px;
+    }
+
+
     
     .btn-cant {
     cursor: pointer;
@@ -503,7 +513,7 @@
     }
 
     .cuotas6 h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .hero {
@@ -526,25 +536,26 @@
 
     
     .card-popu img {
-        width: 202px;
-        height: 210px;
+        width: 157px;
+        height: 160px;
         
     }
     
     .card-popu {
         width: 95%;
-        height: 410px;
+        height: 310px;
         display: flex;
         flex-direction: column;
         gap: 10px;
         position: relative;
         transition: all 0.5s linear;
+        margin-bottom: 20px;
     }
 
     
     .card-popu span {
         position: absolute;
-        bottom: 202px;
+        bottom: 152px;
         background-color: white;
         box-shadow: 0 0 26px rgb(108, 107, 107);
         padding: 2px;
@@ -553,12 +564,30 @@
     
     .card-popu button {
         width: 80px;
-        margin-left: 120px;
+        margin-left: 0px;
         background-color: var(--gray);
         border-radius: 5px;
         cursor: pointer;
         border: 1px solid var(--dark);
         
     }
+
+
+    .section-footer{
+        height: 100%;
+    }
+
+    .footer{
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .icons-footer {
+        flex-direction: row;
     
+    }
+    
+    .icons-footer i {
+        font-size: 18px;
+    }
 }

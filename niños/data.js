@@ -605,7 +605,7 @@ const ropa = [
   },
   {
     id: 55,
-    name: "Zapatillas SuperStar Blancas con Abroche",
+    name: "Zapatillas SuperStar Blancas",
     price: 15999,
     img: "../img/Niños/55.jpg",
     description: "Ñinos Zapatillas",

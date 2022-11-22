@@ -150,7 +150,7 @@
 
 .populares {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     max-width: 1300px;
     margin: 0 auto;
     display: flex;
@@ -158,12 +158,13 @@
     align-items: center;
     margin-top: 100px;
     gap: 40px;
+    margin-bottom: 100px;
 
 }
 
 .cards-populares {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr ;
     /* border: #131415 solid 1px; */
@@ -344,4 +345,249 @@
 
 .signo-peso{
     display: flex;
+}
+
+
+.section-footer {
+    width: 100%;
+    height: 41vh;
+    background-color: var(--arg);
+    margin: 0 auto;
+}
+
+.footer{
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1300px;
+    height: 100%;
+    background-color: var(--arg);
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    
+}
+
+.texto-footer{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 50px;
+}
+
+.texto-footer p {
+    margin: 10px 0px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+
+}
+
+
+.texto-footer p:hover {
+    transition: all 0.5s linear;
+    color: var(--gray);
+    
+
+}
+
+.texto-footer2{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+
+}
+
+.texto-footer2 p {
+    margin: 10px 0px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+
+.texto-footer2 p:hover {
+    transition: all 0.5s linear;
+    color: var(--gray);
+    
+
+}
+
+.icons-footer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.icons-footer a {
+    color: var(--dark);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+
+.icons-footer a:hover {
+    transition: all 0.5s linear;
+    color: var(--gray);
+}
+
+#toggle-menu {
+    display: none;
+}
+
+
+@media (max-width: 992px) {
+    .hero img {
+        display: none;
+    }
+
+    .buscador{
+        display: none;
+    }
+
+
+    .navbar {
+        gap: 10px;
+    }
+
+    .navbar img{
+        width: 50px;
+    }
+
+    .navbar ul{
+         gap:5px;
+    }
+
+
+
+    .cartContainer {
+        top: 0;
+        right: 0;
+        position: absolute;
+        width: 320px;
+        min-height: 800px;
+        color: #ffffff;
+        z-index: 999999;
+        background-color: var(--arg);
+        
+    }
+
+    
+    .divider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width:300px;
+        border-bottom: #131415 solid ;
+        
+    }
+    
+    .cart-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 120px;
+        box-shadow: 0 0 26px rgba(255, 255, 255, 0.699);
+        border-radius: 10px;
+        font-size: 14px;
+    
+    }
+
+    .cart-item img {
+        width: 90px;
+        height: 90px;
+    }
+
+
+    
+    .btn-cant {
+    cursor: pointer;
+    border: 1px solid white;
+    padding: 5px 15px;
+    border-radius: 10px;
+
+    }
+
+    .cuotas6 p {
+       font-size: 15px;
+    }
+
+    .cuotas6 h2 {
+        font-size: 18px;
+    }
+
+    .hero {
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .texto-hero h2 {
+        font-size: 20px;
+    }
+
+
+    .container-arg-pasion {
+        display: none;
+    }
+
+    .cards-populares {
+        grid-template-columns: 1fr 1fr ;
+    }
+
+    
+    .card-popu img {
+        width: 157px;
+        height: 160px;
+        
+    }
+    
+    .card-popu {
+        width: 95%;
+        height: 310px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+        transition: all 0.5s linear;
+        margin-bottom: 20px;
+    }
+
+    
+    .card-popu span {
+        position: absolute;
+        bottom: 152px;
+        background-color: white;
+        box-shadow: 0 0 26px rgb(108, 107, 107);
+        padding: 2px;
+        border-radius: 5px;
+    }
+    
+    .card-popu button {
+        width: 80px;
+        margin-left: 0px;
+        background-color: var(--gray);
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid var(--dark);
+        
+    }
+
+
+    .section-footer{
+        height: 100%;
+    }
+
+    .footer{
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .icons-footer {
+        flex-direction: row;
+    
+    }
+    
+    .icons-footer i {
+        font-size: 18px;
+    }
 }
