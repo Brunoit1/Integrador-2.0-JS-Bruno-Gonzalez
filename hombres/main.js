@@ -15,6 +15,12 @@ const btnAdd = document.querySelector(".btns-add");
 const subTotal = document.querySelector("#subtotal");
 const precioTotal = document.querySelector("#precioTotal");
 const btnBuy = document.querySelector(".btn-Buy")
+// Login
+const loginContainer= document.getElementById('container-login');
+const closeBtn = document.getElementById('close-sesion');
+const sesionIcon = document.getElementById('icon-sesion');
+const iniciarSesionBtn = document.getElementById('iniciar-sesion');
+
 
 let carts = JSON.parse(localStorage.getItem("carts")) || [];
 
@@ -131,6 +137,33 @@ const checkCarrito = (carts) => {
       cartMenu.innerHTML = `<h4>No hay productos en el carrito</h4>`
   } 
 }
+
+
+// login
+
+
+const openLogin = () => {
+  loginContainer.classList.remove('hidden');
+
+}
+
+const closeLogin = () => {   
+
+  loginContainer.classList.add('hidden');
+ }
+
+
+const inciarMsg = () => {
+  loginContainer.classList.add('hidden');
+  alert('Iniciaste Sesion');
+
+}
+
+
+
+
+// 
+
 
 const addCart = (e) =>{
 
@@ -256,6 +289,11 @@ const init = () => {
   cartOpen.addEventListener("click", openCart);
   cerrarCart.addEventListener("click",closeCart);
   btnBuy.addEventListener("click", compraFinal)
+  sesionIcon.addEventListener("click", openLogin);
+  closeBtn.addEventListener("click", closeLogin);
+  window.addEventListener('scroll', closeOnScroll);
+  iniciarSesionBtn.addEventListener("click", inciarMsg);
+  
   
  
 

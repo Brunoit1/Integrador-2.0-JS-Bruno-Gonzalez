@@ -15,6 +15,11 @@ const btnAdd = document.querySelector(".btns-add");
 const subTotal = document.querySelector("#subtotal");
 const precioTotal = document.querySelector("#precioTotal");
 const btnBuy = document.querySelector(".btn-Buy")
+// Login
+const loginContainer= document.getElementById('container-login');
+const closeBtn = document.getElementById('close-sesion');
+const sesionIcon = document.getElementById('icon-sesion');
+const iniciarSesionBtn = document.getElementById('iniciar-sesion');
 
 
 let carts = JSON.parse(localStorage.getItem("carts")) || [];
@@ -78,7 +83,8 @@ const closeCart = () => {
 const renderCartCarrito = (objeto)=>{
   const {img ,name , description,id ,cantidad} = objeto;
   return `
-  <div class="cart-item">
+  
+<div class="cart-item">
     <img src=${img} alt="" />
     <div class="item-info">
       <h3 class="item-title">${name}</h3>
@@ -136,6 +142,31 @@ const checkCarrito = (carts) => {
       cartMenu.innerHTML = `<h4>No hay productos en el carrito</h4>`
   } 
 }
+
+// login
+
+
+const openLogin = () => {
+  loginContainer.classList.remove('hidden');
+
+}
+
+const closeLogin = () => {   
+
+  loginContainer.classList.add('hidden');
+ }
+
+
+const inciarMsg = () => {
+  loginContainer.classList.add('hidden');
+  alert('Iniciaste Sesion');
+
+}
+
+
+
+
+// 
 
 const addCart = (e) =>{
 
@@ -261,6 +292,10 @@ const init = () => {
   cartOpen.addEventListener("click", openCart);
   cerrarCart.addEventListener("click",closeCart);
   btnBuy.addEventListener("click", compraFinal)
+  sesionIcon.addEventListener("click", openLogin);
+  closeBtn.addEventListener("click", closeLogin);
+  window.addEventListener('scroll', closeOnScroll);
+  iniciarSesionBtn.addEventListener("click", inciarMsg);
   
   
  
